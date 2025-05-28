@@ -1,19 +1,17 @@
-PKG_VER="GE-Proton8-27"
+PKG_VER="10.8-windroid"
 PKG_CATEGORY="Wine"
-PKG_PRETTY_NAME="Wine Proton ($PKG_VER)"
-PKG_NEED_AUTORECONF=true
+PKG_PRETTY_NAME="Wine ($PKG_VER)"
 
 BLACKLIST_ARCH=aarch64
 
-# Fork do Wine com os patches do Proton
-GIT_URL="https://github.com/GloriousEggroll/wine-ge-custom.git"
-GIT_COMMIT="GE-Proton8-27"
+GIT_URL=https://github.com/WINDROID-EMU/Wine-Windroid.git
+GIT_COMMIT=main
 
-HOST_BUILD_FOLDER="$INIT_DIR/workdir/$package/wine-tools"
 HOST_BUILD_CONFIGURE_ARGS="--enable-win64 --without-x"
-HOST_BUILD_MAKE="make -j$(nproc) __tooldeps__ nls/all"
+HOST_BUILD_FOLDER="$INIT_DIR/workdir/$package/wine-tools"
+HOST_BUILD_MAKE="make -j $(nproc) __tooldeps__ nls/all"
 
-OVERRIDE_PREFIX="$(realpath $PREFIX/../wine-proton)"
+OVERRIDE_PREFIX="$(realpath $PREFIX/../wine)"
 
 CONFIGURE_ARGS="--enable-archs=i386,x86_64 \
                 --host=$TOOLCHAIN_TRIPLE \
