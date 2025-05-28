@@ -1,20 +1,19 @@
-PKG_VER="10.8"
+PKG_VER="GE-Proton8-27"
 PKG_CATEGORY="Wine"
-PKG_PRETTY_NAME="Wine ($PKG_VER)"
+PKG_PRETTY_NAME="Wine Proton ($PKG_VER)"
 PKG_NEED_AUTORECONF=true
 
 BLACKLIST_ARCH=aarch64
 
-GIT_URL="https://gitlab.winehq.org/wine/wine.git"
-GIT_COMMIT="refs/tags/wine-10.8"
+# Fork do Wine com os patches do Proton
+GIT_URL="https://github.com/GloriousEggroll/wine-ge-custom.git"
+GIT_COMMIT="GE-Proton8-27"
 
-# Caminho para a pasta onde o wine-tools será compilado (necessário para WoW64)
 HOST_BUILD_FOLDER="$INIT_DIR/workdir/$package/wine-tools"
 HOST_BUILD_CONFIGURE_ARGS="--enable-win64 --without-x"
 HOST_BUILD_MAKE="make -j$(nproc) __tooldeps__ nls/all"
 
-# Caminho onde o Wine será instalado
-OVERRIDE_PREFIX="$(realpath $PREFIX/../wine)"
+OVERRIDE_PREFIX="$(realpath $PREFIX/../wine-proton)"
 
 CONFIGURE_ARGS="--enable-archs=i386,x86_64 \
                 --host=$TOOLCHAIN_TRIPLE \
