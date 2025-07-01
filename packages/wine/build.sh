@@ -4,16 +4,12 @@ PKG_PRETTY_NAME="Wine ($PKG_VER)"
 
 BLACKLIST_ARCH=aarch64
 
-# Repositório alterad
 GIT_URL=https://github.com/WINDROID-EMU/Windroid-Wine-Proton
-GIT_BRANCH=dev  # substitui GIT_COMMIT fixo
-
+GIT_COMMIT=e137a37e237ecd2b286ade04c5fe5cb23c445e52
 HOST_BUILD_CONFIGURE_ARGS="--enable-win64 --without-x"
 HOST_BUILD_FOLDER="$INIT_DIR/workdir/$package/wine-tools"
 HOST_BUILD_MAKE="make -j $(nproc) __tooldeps__ nls/all"
-
 OVERRIDE_PREFIX="$(realpath $PREFIX/../wine)"
-
 CONFIGURE_ARGS="--enable-archs=i386,x86_64 \
 				--host=$TOOLCHAIN_TRIPLE \
 				--with-wine-tools=$INIT_DIR/workdir/$package/wine-tools \
@@ -32,7 +28,7 @@ CONFIGURE_ARGS="--enable-archs=i386,x86_64 \
 				--with-mingw=gcc \
 				--with-xinput \
 				--with-xinput2 \
-				--enable-nls \
+    				--enable-nls \
 				--without-xshm \
 				--without-xxf86vm \
 				--without-osmesa \
